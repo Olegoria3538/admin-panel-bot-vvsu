@@ -1,26 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import styled from 'styled-components'
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Wrapper className="App">
+      f
+    </Wrapper>
   );
 }
 
-export default App;
+export { App };
+
+
+const Wrapper = styled.div`
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 350px;
+    height: 500px;
+    border: 1px solid #bbb;
+    border-radius: 20px;
+    overflow: hidden;
+    -webkit-transition: 1s;
+    transition: 1s;
+    max-height: 500px;
+`
