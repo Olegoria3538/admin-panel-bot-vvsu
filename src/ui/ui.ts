@@ -1,7 +1,8 @@
 import styled from 'styled-components'
 
-export const CategoryBtn = styled.div`
-    display: flex;
+export const Button = styled.button`
+    font-family: Arial;
+    display: inline-flex;
     justify-content: center;
     align-items: center;
     background-color: transparent;
@@ -24,4 +25,21 @@ export const CategoryBtn = styled.div`
     &:hover{
         border-color: black;
     }
+    &:focus{
+        outline: none;
+    }
+    &:before {
+        content: "";
+        display: block;
+        width: 17px;
+        height: 1px;
+        position: absolute;
+        background-color: #bbb;
+        left: -17px;
+    }
+`
+export const ButtonAnswer = styled(Button)`
+    background-color: #33c3f0;
+    color: #fff;
+    border: none;
 `
