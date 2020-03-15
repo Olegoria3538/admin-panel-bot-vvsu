@@ -1,4 +1,20 @@
 import styled from 'styled-components'
+import { css } from 'styled-components'
+
+export const scrollBar = css`
+    .scroll_bar_bot {
+	.ScrollbarsCustom-TrackY {
+		background-color: inherit !important;
+		width: 8px !important;
+		border-radius: 0 !important;
+
+		.ScrollbarsCustom-Thumb {
+			border-radius: 0 !important;
+			background: rgba(0, 0, 0, 0.1) !important;
+		}
+	}
+}
+`
 
 export const Button = styled.button`
     font-family: Arial;

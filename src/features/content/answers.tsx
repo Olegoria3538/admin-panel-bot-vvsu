@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components'
-import { ButtonAnswer } from '../ui/ui'
+import { ButtonAnswer } from '../../ui/ui'
 
 type AnswersType = {
     answers: string

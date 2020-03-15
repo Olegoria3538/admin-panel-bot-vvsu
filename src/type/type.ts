@@ -2,9 +2,7 @@
 export interface BaseType {
     category: categoryType[]
     anq: {
-        "Категория 1": anqType[]
-        "Категория 2": anqType[]
-        "Категория 3": anqType[]
+        [s: string]: anqType[]
     }
 }
 

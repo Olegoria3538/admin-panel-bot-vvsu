@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components'
-import { Button } from '../ui/ui'
+import { Button } from '../../ui/ui'
 import { Answers } from './answers'
 
 type QuestionType = {

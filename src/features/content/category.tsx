@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components'
-import { Button } from '../ui/ui'
+import { Button } from '../../ui/ui'
 import { Questions } from './questions'
-import { anqType } from '../type/type'
+import { anqType } from '../../type/type'
 
 type CategoryType = {
     text: string
@@ -12,7 +12,7 @@ type CategoryType = {
 const Category = ({ text, questions }: CategoryType) => {
     const [open, setOpen] = useState(false)
     return (
-        <Wrapper className="App">
+        <Wrapper>
             <Button onClick={() => setOpen(!open)}>{text}</Button>
             {open &&
                 questions.map((el, index) =>
@@ -30,4 +30,6 @@ const Category = ({ text, questions }: CategoryType) => {
 export { Category };
 
 
-const Wrapper = styled.div``
+const Wrapper = styled.div`
+    padding-right: 20px;
+`
