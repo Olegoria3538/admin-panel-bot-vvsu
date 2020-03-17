@@ -1,25 +1,24 @@
 import React from 'react';
 import styled from 'styled-components'
-import { Category } from './category'
-import { $Store } from '../../model/model'
+import { Group } from './group'
+import { $Store } from '../../model'
 import { useStore } from 'effector-react'
 import { Scrollbar } from 'react-scrollbars-custom';
 import { scrollBar } from '../../ui/ui'
+import { GeneralIssues } from './general-issues'
 
 
 const Content = () => {
-  const { category, anq } = useStore($Store)
+  const { napravleniya } = useStore($Store)
   return (
     <Wrapper>
       <Scrollbar className="scroll_bar_bot">
-        {category.map((el, index) =>
-          <Category
-            key={index}
-            text={el.name}
-            // @ts-ignore
-            questions={anq[el.kategory_id]}
-          />
-        )}
+        <>
+          {napravleniya?.map((el, index) =>
+            <Group key={index} {...el} />
+          )}
+          <GeneralIssues />
+        </>
       </Scrollbar>
     </Wrapper>
   );

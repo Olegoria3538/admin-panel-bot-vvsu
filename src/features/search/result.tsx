@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components'
-import { $SearchArray } from '../../model/search'
+import { $SearchArray } from '../../model'
 import { useStore } from 'effector-react'
 import { Button, scrollBar } from '../../ui/ui'
 import { Answer } from './answer'
@@ -13,10 +13,11 @@ type ResultType = {
 
 const Result = ({ request, close }: ResultType) => {
     const SearchArray = useStore($SearchArray)
-    const [answer, setAnswer] = useState({ answer: '', open: false })
+    console.log(SearchArray)
+    const [answer, setAnswer] = useState<{ answer: string, open: boolean }>({ answer: '', open: false })
     if (!request || request?.trim() === '') return null
     const filter = SearchArray.filter(el =>
-        el.answer.toLowerCase().includes(request.toLowerCase())
+        el?.question?.toLowerCase().includes(request.toLowerCase())
     )
     return (
         <>
@@ -25,11 +26,13 @@ const Result = ({ request, close }: ResultType) => {
                 <Scrollbar className="scroll_bar_bot">
                     <WrapperItem>
                         {!filter.length ? 'Мы ничего не нашли(' :
-                            filter.map(el => <Button
-                                key={el.answer}
-                                onClick={() => setAnswer({ answer: el.question, open: true })}>
-                                {el.answer}
-                            </Button>
+                            filter.map(el =>
+                                <Button
+                                    key={el?.answer}
+                                    //@ts-ignore
+                                    onClick={() => setAnswer({ answer: el?.answer, open: true })}>
+                                    {el?.question}
+                                </Button>
                             )}
                     </WrapperItem>
                 </Scrollbar>

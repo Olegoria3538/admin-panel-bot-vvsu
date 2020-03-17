@@ -1,15 +1,22 @@
 import React from 'react';
 import styled from 'styled-components'
-import { Content } from './content/content'
+import { Content } from './content'
 import { Search } from './search/search'
+import { useStore } from 'effector-react'
+import { $Store } from '../model'
 
 const App = () => {
-  return (
-    <Wrapper>
-      <Content />
-      <Search />
-    </Wrapper>
-  )
+  const { complete } = useStore($Store)
+  if (!complete) {
+    return null
+  } else {
+    return (
+      <Wrapper>
+        <Content />
+        <Search />
+      </Wrapper>
+    )
+  }
 }
 
 export { App };

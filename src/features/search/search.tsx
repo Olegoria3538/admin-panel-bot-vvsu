@@ -10,7 +10,7 @@ const Search = () => {
             <Input type="text" placeholder="Поиск" onChange={e => { setRequest(e.target.value); setOpen(true) }} />
             <Btn onClick={() => setOpen(true)} />
             {open &&
-                <Result request={request} close={() => setOpen(false)}/>
+                <Result request={request} close={() => setOpen(false)} />
             }
         </Wrapper>
     )
