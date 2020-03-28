@@ -1,9 +1,8 @@
-import React, { useState } from "react"
+import React, { useState, useContext } from "react"
 import styled from "styled-components"
-import { Button } from "../../../ui/ui"
-import { Answers } from "./answers"
-import { useStore } from "effector-react"
-import { $Store } from "../../../model"
+import { Button } from "../common/ui"
+import { Answers } from "../common/answers"
+import { DataContext } from "../"
 
 type CategoryType = {
   section_answer_id: string
@@ -16,8 +15,8 @@ const Question = ({
   section_answer_id,
   section_answer
 }: CategoryType) => {
-  const { answers } = useStore($Store)
-  const answersFilter = answers?.filter(
+  const { answers } = useContext(DataContext)
+  const answersFilter = answers.filter(
     el =>
       el.section_answer_id === section_answer_id &&
       el.napravleniya_id === napravleniya_id
@@ -29,7 +28,7 @@ const Question = ({
       <WrapQuestuons>
         <Button onClick={() => setOpen(!open)}>{section_answer}</Button>
         {open &&
-          answersFilter?.map((el, index) => (
+          answersFilter.map((el, index) => (
             <Answers key={index} answers={el.answer} />
           ))}
       </WrapQuestuons>

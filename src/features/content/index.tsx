@@ -4,26 +4,30 @@ import { Group } from "./directions/group"
 import { $Store } from "../../model"
 import { useStore } from "effector-react"
 import { Scrollbar } from "react-scrollbars-custom"
-import { scrollBar } from "../../ui/ui"
+import { scrollBar } from "./common/ui"
 import { GeneralIssues } from "./general-issues"
+import { InitData } from "../../model/init"
+
+const DataContext = React.createContext(InitData)
 
 const Content = () => {
-  const { napravleniya } = useStore($Store)
+  const data = useStore($Store)
+  const { napravleniya } = data
   return (
     <Wrapper>
       <Scrollbar className="scroll_bar_bot">
-        <>
-          {napravleniya?.map((el, index) => (
+        <DataContext.Provider value={data}>
+          {napravleniya.map((el, index) => (
             <Group key={index} {...el} />
           ))}
           <GeneralIssues />
-        </>
+        </DataContext.Provider>
       </Scrollbar>
     </Wrapper>
   )
 }
 
-export { Content }
+export { Content, DataContext }
 
 const Wrapper = styled.div`
   height: 460px;

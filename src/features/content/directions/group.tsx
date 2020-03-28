@@ -1,19 +1,18 @@
-import React, { useState } from "react"
+import React, { useState, useContext } from "react"
 import styled from "styled-components"
-import { Button } from "../../../ui/ui"
+import { Button } from "../common/ui"
 import { Napravleniya } from "../../../type"
-import { useStore } from "effector-react"
-import { $Store } from "../../../model"
 import { Question } from "./question"
+import { DataContext } from "../"
 
 const Group = ({ napravleniya_id, napravleniya }: Napravleniya) => {
-  const { answer_sections } = useStore($Store)
+  const { answer_sections } = useContext(DataContext)
   const [open, setOpen] = useState(false)
   return (
     <Wrapper key={napravleniya_id}>
       <Button onClick={() => setOpen(!open)}>{napravleniya}</Button>
       {open &&
-        answer_sections?.map((el, index) => (
+        answer_sections.map((el, index) => (
           <Question key={index} {...el} napravleniya_id={napravleniya_id} />
         ))}
     </Wrapper>

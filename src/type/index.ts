@@ -1,11 +1,11 @@
 export interface DataType {
-  answers?: Answer[]
-  academ_levels?: AcademLevel[]
-  answer_sections?: AnswerSection[]
-  main_answers?: MainAnswer[]
-  main_questions?: MainQuestion[]
-  napravleniya?: Napravleniya[]
-  complete?: boolean
+  answers: Answer[]
+  academ_levels: AcademLevel[]
+  answer_sections: AnswerSection[]
+  main_answers: MainAnswer[]
+  main_questions: MainQuestion[]
+  napravleniya: Napravleniya[]
+  complete: boolean
 }
 
 export interface SearhType {
@@ -32,6 +32,7 @@ export interface AnswerSection {
 export interface MainAnswer {
   question_id: string
   answers: string
+  url: string
 }
 
 export interface MainQuestion {

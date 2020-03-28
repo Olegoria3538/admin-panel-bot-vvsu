@@ -1,14 +1,13 @@
-import React, { useState } from "react"
+import React, { useState, useContext } from "react"
 import styled from "styled-components"
 import { MainQuestion } from "../../../type"
-import { useStore } from "effector-react"
-import { $Store } from "../../../model"
-import { Button } from "../../../ui/ui"
-import { Answers } from "../directions/answers"
+import { Button } from "../common/ui"
+import { Answers } from "../common/answers"
+import { DataContext } from ".."
 
 const Question = ({ questions, question_id }: MainQuestion) => {
-  const { main_answers } = useStore($Store)
-  const answer = main_answers?.find(el => el.question_id === question_id)
+  const { main_answers } = useContext(DataContext)
+  const answer = main_answers.find(el => el.question_id === question_id)
   const [open, setOpen] = useState(false)
   return (
     <Wrapper>
@@ -17,7 +16,12 @@ const Question = ({ questions, question_id }: MainQuestion) => {
         {open && (
           <Answers
             //@ts-ignore
-            answers={answer?.answers}
+            answers={
+              (!!answer?.answers ? answer?.answers : "") +
+              " " +
+              (!!answer?.url ? answer.url : "")
+            }
+            url={answer?.url}
           />
         )}
       </WrapQuestuons>
