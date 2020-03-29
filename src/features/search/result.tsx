@@ -33,9 +33,8 @@ const Result = ({ request, close }: ResultType) => {
                   <Button
                     key={el?.answer}
                     onClick={() =>
-                      //@ts-ignore
                       setAnswer({
-                        answer: el?.answer ? el?.answer : "",
+                        answer: el.answer,
                         open: true
                       })
                     }

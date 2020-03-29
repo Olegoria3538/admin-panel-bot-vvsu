@@ -1,4 +1,4 @@
-import { createStore, createEffect } from "effector"
+import { createStore, createEffect, createEvent } from "effector"
 import { DataType } from "../type"
 import { InitData } from "./init"
 
@@ -33,4 +33,11 @@ const $SearchArray = $Store.map(({ main_answers, main_questions }) => {
 
 DataInit()
 
-export { $Store, $SearchArray }
+const $toggle = createStore<boolean>(true)
+const toggleEvent = createEvent<boolean | void>()
+$toggle.on(toggleEvent, (state, x) => {
+  if (!x) return !state
+  return x
+})
+
+export { $Store, $SearchArray, $toggle, toggleEvent }
