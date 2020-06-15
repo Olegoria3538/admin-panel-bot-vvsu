@@ -4,8 +4,8 @@ import { Scrollbar } from "react-scrollbars-custom"
 import { scrollBar } from "../content/common/ui"
 
 type ResultType = {
-  answer: string
-  close: Function
+  answer: { text: string; url: string }
+  close: () => void
 }
 
 const Answer = ({ answer, close }: ResultType) => {
@@ -14,7 +14,8 @@ const Answer = ({ answer, close }: ResultType) => {
       <Scrollbar className="scroll_bar_bot">
         <WrapperItem>
           <Down onClick={() => close()} />
-          {answer}
+          {answer.text}{" "}
+          {answer?.url ? <a href={answer.url}>{answer.url}</a> : null}
         </WrapperItem>
       </Scrollbar>
     </Wrapper>

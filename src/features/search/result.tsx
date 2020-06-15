@@ -13,12 +13,13 @@ type ResultType = {
 
 const Result = ({ request, close }: ResultType) => {
   const SearchArray = useStore($SearchArray)
-  const [answer, setAnswer] = useState<{ answer: string; open: boolean }>({
-    answer: "",
-    open: false
+  const [data, setData] = useState({
+    answer: { text: "", url: "" },
+    open: false,
   })
+
   if (!request || request?.trim() === "") return null
-  const filter = SearchArray.filter(el =>
+  const filter = SearchArray.filter((el) =>
     el?.question?.toLowerCase().includes(request.toLowerCase())
   )
   return (
@@ -29,13 +30,13 @@ const Result = ({ request, close }: ResultType) => {
           <WrapperItem>
             {!filter.length
               ? "Мы ничего не нашли("
-              : filter.map(el => (
+              : filter.map((el) => (
                   <Button
                     key={el?.answer}
                     onClick={() =>
-                      setAnswer({
-                        answer: el.answer,
-                        open: true
+                      setData({
+                        answer: { text: el.answer, url: el.url },
+                        open: true,
                       })
                     }
                   >
@@ -45,10 +46,10 @@ const Result = ({ request, close }: ResultType) => {
           </WrapperItem>
         </Scrollbar>
       </Wrapper>
-      {answer.open && (
+      {data.open && (
         <Answer
-          answer={answer.answer}
-          close={() => setAnswer({ ...answer, open: false })}
+          answer={data.answer}
+          close={() => setData({ ...data, open: false })}
         />
       )}
     </>
