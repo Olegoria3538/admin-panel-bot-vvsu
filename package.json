@@ -16,7 +16,7 @@
     "react": "^16.13.0",
     "react-custom-scrollbars": "^4.2.1",
     "react-dom": "^16.13.0",
-    "react-scripts": "3.4.0",
+    "react-scripts": "5.0.1",
     "react-scrollbars-custom": "^4.0.21",
     "styled-components": "^5.0.1",
     "typescript": "~3.7.2"
